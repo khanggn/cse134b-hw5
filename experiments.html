@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Experiments with HTML elements: template, audio, video, canvas, source, and MathML."
+    />
+    <title>Experiments | Khang Nguyen</title>
+    <link rel="icon" href="images/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script src="js/theme-init.js"></script>
+    <script src="js/theme.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <svg width="40" height="40" viewBox="0 0 40 40" role="img">
+          <title>Khang's logo</title>
+          <rect width="40" height="40" fill="black" />
+        </svg>
+        Khang N
+      </a>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="playlists.html">My Playlists</a>
+          </li>
+          <li>
+            <a href="about.html">About</a>
+          </li>
+          <li>
+            <a href="contact.html">Contact</a>
+          </li>
+          <li>
+            <a href="resume/khangresume.pdf" target="_blank">Resume</a>
+          </li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" aria-label="Switch to light mode" hidden></button>
+    </header>
+    <main>
+      <h1>Experiments</h1>
+
+      <section>
+        <h2>Template</h2>
+        <template id="track-card-template">
+          <article>
+            <h3>Project name</h3>
+            <p>One-line project summary.</p>
+            <a href="#">Read the case study</a>
+          </article>
+        </template>
+      </section>
+
+      <section>
+        <h2>Audio</h2>
+        <audio controls>
+          <source src="media/sample-audio.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+          <a href="media/sample-audio.mp3">Download the audio</a>.
+        </audio>
+      </section>
+
+      <section>
+        <h2>Video</h2>
+        <video controls width="480" height="270" preload="metadata">
+          <source src="media/sample-video.mp4" type="video/mp4" />
+          Your browser does not support the video element.
+          <a href="media/sample-video.mp4">Download the video</a>.
+        </video>
+      </section>
+
+      <section>
+        <h2>Canvas</h2>
+        <canvas id="record-canvas" width="200" height="200">
+          A drawing of a black vinyl record with a white center label.
+        </canvas>
+        <script>
+          const canvas = document.getElementById("record-canvas");
+          const ctx = canvas.getContext("2d");
+          ctx.fillStyle = "black";
+          ctx.beginPath();
+          ctx.arc(100, 100, 90, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = "white";
+          ctx.beginPath();
+          ctx.arc(100, 100, 25, 0, Math.PI * 2);
+          ctx.fill();
+        </script>
+      </section>
+
+      <section>
+        <h2>MathML</h2>
+        <math display="block">
+          <mi>E</mi>
+          <mo>=</mo>
+          <mi>m</mi>
+          <msup>
+            <mi>c</mi>
+            <mn>2</mn>
+          </msup>
+        </math>
+        <p>
+          MathML has technically been part of HTML for years, but you couldn't
+          really rely on it. According to caniuse.com, Chrome added it back in
+          version 24, removed it because it was buggy, and didn't bring it back
+          until version 109 in 2023 (same for Edge). Since most people browse on
+          Chrome or Edge, using MathML meant most visitors would just see broken
+          equations, so developers stuck with images or tools like MathJax until
+          every major browser caught up.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>
+        <b>Khang Nguyen</b> <br />
+        Designer &amp; developer &middot; San Diego
+      </p>
+      <ul>
+        <li><a href="mailto:khn042@ucsd.edu">Email</a></li>
+        <li>
+          <a href="https://www.linkedin.com/in/khangnguyen05" target="_blank"
+            >LinkedIn</a
+          >
+        </li>
+        <li><a href="https://github.com/khanggn" target="_blank">Github</a></li>
+        <li><a href="resume/khangresume.pdf" target="_blank">Resume</a></li>
+        <li><a href="experiments.html">Experiments</a></li>
+      </ul>
+      <p>&copy; 2026 Khang Nguyen</p>
+    </footer>
+  </body>
+</html>

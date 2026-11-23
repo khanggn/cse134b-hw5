@@ -1,29 +1,27 @@
 //custom web component <cat-facts>
-const SAMPLE_FACTS = [
-  "Cats can jump up to six times their length.",
-  "Cats have whiskers on the backs of their front legs, as well.",
-  "Some cats can swim.",
-];
-
+//part 2: now loads facts live from the Cat Facts API 
+const CAT_FACT_URL = "https://catfact.ninja/fact";
 class CatFacts extends HTMLElement {
   static get observedAttributes() {
     return ["compact"];
   }
   constructor() {
     super();
-    this.currentIndex = 0;
-    this.handleNextClick = this.handleNextClick.bind(this);
+    this.factCount = 0;
+    this.handleFactClick = this.handleFactClick.bind(this);
   }
   connectedCallback() {
     if (!this.factText) {
       this.render();
     }
-    this.nextButton.addEventListener("click", this.handleNextClick);
-    this.showFact();
+    this.factButton.addEventListener("click", this.handleFactClick);
     this.updateCompact();
+    if (this.factCount === 0) {
+      this.loadFact();
+    }
   }
   disconnectedCallback() {
-    this.nextButton.removeEventListener("click", this.handleNextClick);
+    this.factButton.removeEventListener("click", this.handleFactClick);
   }
   attributeChangedCallback(name) {
     if (name === "compact") {
@@ -38,29 +36,60 @@ class CatFacts extends HTMLElement {
     this.factText.className = "cat-facts-text";
     this.details = document.createElement("p");
     this.details.className = "cat-facts-details";
-    this.nextButton = document.createElement("button");
-    this.nextButton.type = "button";
-    this.nextButton.textContent = "Tell me something about cats";
+    this.factButton = document.createElement("button");
+    this.factButton.type = "button";
+    this.factButton.textContent = "Tell me something about cats";
     this.status = document.createElement("p");
     this.status.className = "cat-facts-status";
     this.status.setAttribute("role", "status");
     fragment.appendChild(heading);
     fragment.appendChild(this.factText);
     fragment.appendChild(this.details);
-    fragment.appendChild(this.nextButton);
+    fragment.appendChild(this.factButton);
     fragment.appendChild(this.status);
     this.appendChild(fragment);
   }
-  handleNextClick() {
-    this.currentIndex = (this.currentIndex + 1) % SAMPLE_FACTS.length;
-    this.showFact();
+  handleFactClick() {
+    if (this.isLoading) {
+      return;
+    }
+    this.loadFact();
   }
-  showFact() {
-    const fact = SAMPLE_FACTS[this.currentIndex];
-
-    this.factText.textContent = fact;
-    this.details.textContent = `${fact.length} characters · Source: sample data`;
-    this.status.textContent = `Fact ${this.currentIndex + 1} of ${SAMPLE_FACTS.length}`;
+  async loadFact() {
+    this.isLoading = true;
+    this.factButton.setAttribute("aria-disabled", "true");
+    this.setStatus("Loading a cat fact…", "loading");
+    try {
+      const response = await fetch(CAT_FACT_URL);
+      if (!response.ok) {
+        throw new Error(`HTTP status ${response.status}`);
+      }
+      const data = await response.json();
+      if (typeof data?.fact !== "string" || data.fact.trim() === "") {
+        throw new Error("Expected a fact string in the response.");
+      }
+      const length = typeof data.length === "number" ? data.length : data.fact.length;
+      this.factCount += 1;
+      this.factText.textContent = data.fact;
+      this.details.textContent = `${length} characters · Source: catfact.ninja`;
+      this.factButton.textContent = "Tell me something about cats";
+      this.setStatus(`Fact ${this.factCount} loaded.`, "success");
+    } catch (error) {
+      console.error("Couldn't load a cat fact.", error);
+      if (this.factCount === 0) {
+        this.factText.textContent = "No cat fact yet.";
+        this.details.textContent = "";
+      }
+      this.factButton.textContent = "Try again";
+      this.setStatus("Couldn't load a cat fact. Check your connection and try again.", "error");
+    } finally {
+      this.isLoading = false;
+      this.factButton.removeAttribute("aria-disabled");
+    }
+  }
+  setStatus(message, state) {
+    this.status.textContent = message;
+    this.status.dataset.state = state;
   }
   updateCompact() {
     if (!this.details) {

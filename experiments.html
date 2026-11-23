@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="css/styles.css"/>
     <script src="js/theme-init.js"></script>
     <script src="js/theme.js" defer></script>
+    <script src="js/cat-facts.js" defer></script>
+    <script src="js/cat-facts-controls.js" defer></script>
   </head>
   <body>
     <header>
@@ -45,6 +47,17 @@
     </header>
     <main>
       <h1>Experiments</h1>
+      
+      <section class="cat-facts-section">
+        <h2>Web Component: Cat Facts</h2>
+        <button type="button" id="compact-toggle" aria-pressed="false" hidden>
+          Compact view
+        </button>
+        <cat-facts></cat-facts>
+        <noscript>
+          <p>Enable JavaScript to load live data for this widget.</p>
+        </noscript>
+      </section>
 
       <section>
         <h2>Template</h2>

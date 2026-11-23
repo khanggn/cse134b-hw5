@@ -916,6 +916,29 @@ nav[aria-label="Playlists"] a:hover {
     color: var(--color-accent);
 }
 
+/* VISUAL FOR CUSTOM CACT FACTS COMPONENT */
+
+cat-facts {
+    display: block;
+    max-width: 40rem;
+    margin-top: 1rem;
+    padding: 1.5rem;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.cat-facts-details,
+.cat-facts-status {
+    font-size: var(--text-sm);
+}
+
+#compact-toggle[aria-pressed="true"] {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+}
+
 /* different screen sizes */
 @media (min-width: 768px) {
     .hero {

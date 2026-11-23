@@ -916,22 +916,27 @@ nav[aria-label="Playlists"] a:hover {
     color: var(--color-accent);
 }
 
-/* VISUAL FOR CUSTOM CACT FACTS COMPONENT */
+/* styling for the custom component */
 
 cat-facts {
-    display: block;
-    max-width: 40rem;
-    margin-top: 1rem;
-    padding: 1.5rem;
-    background-color: var(--color-surface);
-    color: var(--color-text);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
+    --cat-facts-background: var(--color-surface);
+    --cat-facts-text: var(--color-text);
+    --cat-facts-heading: var(--color-heading);
+    --cat-facts-border: var(--color-border);
+    --cat-facts-accent: var(--color-accent);
+    --cat-facts-button-text: var(--color-bg);
+    --cat-facts-error: var(--color-error);
+    --cat-facts-radius: var(--radius);
 }
 
-.cat-facts-details,
-.cat-facts-status {
-    font-size: var(--text-sm);
+#compact-toggle {
+    padding: 0.5rem 1rem;
+    font: inherit;
+    background-color: transparent;
+    color: var(--color-text);
+    border: 2px solid var(--color-accent);
+    border-radius: 999px;
+    cursor: pointer;
 }
 
 #compact-toggle[aria-pressed="true"] {

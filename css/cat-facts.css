@@ -1,0 +1,43 @@
+cat-facts {
+    display: block;
+    max-width: 40rem;
+    margin-top: 1rem;
+    padding: 1.5rem;
+    background-color: var(--cat-facts-background, #303030);
+    color: var(--cat-facts-text, #E8E8E3);
+    border: 1px solid var(--cat-facts-border, rgba(255, 255, 255, 0.1));
+    border-radius: var(--cat-facts-radius, 1rem);
+}
+
+cat-facts h3 {
+    color: var(--cat-facts-heading, #FFFFFF);
+}
+
+.cat-facts-details,
+.cat-facts-status {
+    font-size: 0.875rem;
+}
+
+.cat-facts-status[data-state="error"] {
+    color: var(--cat-facts-error, #F87171);
+}
+
+cat-facts button {
+    padding: 0.5rem 1rem;
+    font: inherit;
+    background-color: var(--cat-facts-accent, #C4B5FD);
+    color: var(--cat-facts-button-text, #262626);
+    border: 2px solid var(--cat-facts-accent, #C4B5FD);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+cat-facts button:focus-visible {
+    outline: 3px solid var(--cat-facts-accent, #C4B5FD);
+    outline-offset: 3px;
+}
+
+cat-facts button[aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: wait;
+}

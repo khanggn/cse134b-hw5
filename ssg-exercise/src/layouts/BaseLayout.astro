@@ -1,0 +1,42 @@
+---
+import Footer from "../components/Footer.astro";
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" href="/images/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <!-- is:inline tells Astro to leave these script tags exactly as written -->
+    <script is:inline src="/js/theme-init.js"></script>
+    <script is:inline src="/js/theme.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a href="/">
+        <svg width="40" height="40" viewBox="0 0 40 40" role="img">
+          <title>Khang's logo</title>
+          <rect width="40" height="40" fill="black" />
+        </svg>
+        Khang N
+      </a>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" aria-label="Switch to light mode" hidden></button>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

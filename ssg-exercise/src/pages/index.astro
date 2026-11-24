@@ -1,0 +1,128 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout
+  title="Khang Nguyen | Developer & Designer"
+  description="Khang Nguyen is a developer and designer in San Diego. Explore UI/UX case studies, projects, and more."
+>
+  <section class="hero">
+    <h1>Hi, I'm Khang</h1>
+    <p>
+      I like to <strong>design</strong> and <strong>code</strong>. Whether
+      it's for clients, hackathons, or just for fun, I'm
+      <em>always</em> building something.
+    </p>
+    <p class="hero-action">
+      <a href="playlists.html">Listen to my work</a>
+      <a href="contact.html">Get in touch</a>
+    </p>
+    <picture>
+      <source srcset="/images/placeholder.webp" type="image/webp" />
+      <img
+        src="/images/placeholder.jpg"
+        alt="placeholder image"
+        width="400"
+        height="400"
+      />
+    </picture>
+  </section>
+  <section class="featured">
+    <h2>Featured Tracks</h2>
+    <a href="playlists.html">See all playlists</a>
+    <div class="card-grid">
+    <track-card>
+      <article>
+        <img
+          src="/images/placeholder.jpg"
+          alt="West Coast Adult Soccer League website homepage"
+          width="400"
+          height="250"
+        />
+        <h3>
+          <a href="case-study-wcasl.html">West Coast Adult Soccer League</a>
+        </h3>
+        <p>
+          Designed and launched a website for an 800+ player adult soccer
+          league in South Orange County.
+        </p>
+        <span>UI/UX case study</span>
+      </article>
+    </track-card>
+ 
+    <track-card>
+      <article>
+        <img
+          src="/images/placeholder.jpg"
+          alt="Plastic Beach website homepage"
+          width="400"
+          height="250"
+        />
+        <h3>
+          <a href="case-study-plastic-beach.html">Plastic Beach</a>
+        </h3>
+        <p>
+          Redesigned the site and recycling materials for a SoCal nonprofit
+          cutting soft-plastic waste across 40+ retail and distribution
+          partners.
+        </p>
+        <span>UI/UX case study</span>
+      </article>
+    </track-card>
+ 
+    <track-card>
+      <article>
+        <img
+          src="/images/placeholder.jpg"
+          alt="Propel redesigned homepage"
+          width="400"
+          height="250"
+        />
+        <h3>
+          <a href="case-study-propel.html">Extending Propel</a>
+        </h3>
+        <p>
+          Grocery planning feature that turns a passive list into a weekly
+          planning tool.
+        </p>
+        <span>UI/UX case study</span>
+      </article>
+    </track-card>
+    </div>
+  </section>
+ 
+  <section class="records">
+    <h2>Off the Records</h2>
+    <article>
+      <span>Wrapped</span>
+      <h3>My Spotify stats</h3>
+      <p><strong>12,826</strong> hours listened</p>
+      <p>
+        Top artist, minutes listened, and the songs I've had on repeat since
+        2018
+      </p>
+      <a href="wrapped.html">See my Wrapped</a>
+    </article>
+ 
+    <article>
+      <span>B-sides</span>
+      <h3>Off the Resume</h3>
+      <div class="photos">
+      <img
+        src="/images/placeholder.jpg"
+        alt="Khang taking pictures"
+        width="120"
+        height="120"
+      />
+      <img
+        src="/images/placeholder.jpg"
+        alt="Khang rock climbing"
+        width="120"
+        height="120"
+      />
+      </div>
+      <p>What I'm into right now, and a few fun facts about me.</p>
+      <a href="b-sides.html">Flip to the B-sides</a>
+    </article>
+  </section>
+ 
+</BaseLayout>
